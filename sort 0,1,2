@@ -1,0 +1,23 @@
+void sort012(int *arr, int n)
+{
+   int s=0;
+       int mid=0;
+       int l=n-1;
+       while(mid<=l){
+           if(arr[mid]==0){
+               swap(arr[s],arr[mid]);
+               mid++;
+               s++;
+              
+           }
+           if(arr[mid]==1){
+               mid++;
+    
+           }
+           if(arr[mid]==2){
+               swap(arr[mid],arr[l]);
+               l--;
+              
+           }
+       }
+}
