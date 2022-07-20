@@ -1,0 +1,82 @@
+         // SINGLY LINKED LIST
+
+class node{
+
+    public:
+    int data;
+    node* next;
+
+    node(int data){
+        this->data = data;
+        this->next=NULL;
+    }
+};
+
+void print(node* &head){
+    if(head == NULL){
+        cout<<"LIST IS EMPTY"<<endl; 
+        return;
+    }
+    node *temp= head;
+    while(temp !=NULL){
+        cout<<temp->data<<"->";
+        temp=temp->next;
+    }cout<<endl;
+
+}
+void insertathead(node* &head, int d){
+    node* temp =  new node(d);
+    temp->next=head;
+    head=temp;
+}
+
+void insertionattail(node* &tail ,int d){
+    node* temp= new node(d);
+    tail->next=temp;
+    tail=temp;
+}
+
+void insertatposition(node* &head, node* &tail, int d, int pos){
+    if(pos==1){
+        insertathead(head,d);
+        return;
+    }
+    node* temp= head;
+    int count=1;
+
+    while(count<pos-1){
+        temp=temp->next;
+        count++;
+    }
+
+    if(temp->next==NULL){
+        insertionattail(tail,d);
+        return;
+    }
+
+    node* nodetoinsert =new node(d);
+    nodetoinsert->next= temp->next;
+    temp->next= nodetoinsert;
+
+}
+int main(){
+    node* node1 = new node(4);
+
+    //cout<<node1->data<<endl;
+    //cout<<node1->next<<endl;
+
+     node* head= node1;
+     node* tail= node1;
+
+     //print(head);
+
+     insertathead(head,5);
+
+     insertionattail(tail,3);
+     insertionattail(tail,2);
+     insertionattail(tail,1);
+     print(head);
+     
+     insertatposition(head,tail,6,4);
+     print(head);
+}
